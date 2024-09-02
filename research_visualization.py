@@ -90,6 +90,7 @@ total_funding = filtered_funding_data['Donation Amount'].sum()
 # Display dynamically updated data preview with additional details
 st.write("Data Preview (Filtered):")
 filtered_funding_data_display = filtered_funding_data[['Company Name', 'Original Funder', 'Donation Amount', 'Year', 'School and Program', 'Source', 'Notes']].round(2)
+filtered_funding_data_display['Year'] = filtered_funding_data_display['Year'].astype(str)  # Convert 'Year' to string to avoid commas
 filtered_funding_data_display.index = range(1, len(filtered_funding_data_display) + 1)  # Start numbering at 1
 st.dataframe(filtered_funding_data_display)
 
