@@ -176,6 +176,39 @@ top_companies_chart.update_layout(
 )
 st.plotly_chart(top_companies_chart, use_container_width=True)
 
+# Calculate top recipients based on the sum of 'Donation Amount'
+top_recipients = filtered_funding_data.groupby('School and Program')['Donation Amount'].sum().nlargest(10).reset_index()
+top_recipient_n = len(top_recipients)
+top_recipients_total = top_recipients['Donation Amount'].sum()
+
+# Create a bar chart to visualize the top recipients
+st.subheader('Top Recipients in Selected Range')
+top_recipients_chart = px.bar(
+    top_recipients,
+    x='Donation Amount',
+    y='School and Program',
+    title=f'Top {top_recipient_n} Recipients in Selected Range<br>Total: ${top_recipients_total:,.2f}',
+    orientation='h',
+    labels={'Donation Amount': 'Donation Amount', 'School and Program': 'Recipient'},
+    template='plotly_white'
+)
+
+# Adjust the layout to handle long titles
+top_recipients_chart.update_layout(
+    font=dict(
+        family="Helvetica, Arial, sans-serif",
+        size=14,
+        color="Black"
+    ),
+    xaxis_title='Donation Amount',
+    yaxis_title='Recipient',
+    title_x=0.5,  # Center the title
+    margin=dict(t=100),  # Increase top margin to accommodate long titles
+)
+
+# Display the chart
+st.plotly_chart(top_recipients_chart, use_container_width=True)
+
 # Display the number of studies funded by selected company names in a table
 matching_studies = studies_data[studies_data['Company Name'].apply(lambda x: any(company_name.lower() in x for company_name in selected_company_names))]
 matching_studies_display = matching_studies[['Original Funder', 'Year', 'Specific Study DOI', 'Article Title', 'Source Title']].reset_index(drop=True)
