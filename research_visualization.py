@@ -221,7 +221,7 @@ st.dataframe(matching_studies_display)
 st.markdown(
     """
     **Note**: While 141 studies were found associated with the monetary funders, 
-    there are actually 784 studies associated with all companies on the GOGEL and GCEL lists.
+    there are actually 784 studies associated with all companies on GOGEL (Global Oil and Gas Exit List) and GCEL (Global Coal Exit List).
     To view them and all our raw data, visit this link: 
     [View the data on Google Sheets](https://docs.google.com/spreadsheets/d/1YUyaAc7bS6f8nIWgQSFUVByV_8mlqsSap2XAQfRfReQ/edit?gid=1536854#gid=1536854)
     """
