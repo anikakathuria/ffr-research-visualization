@@ -1,4 +1,4 @@
-You can access this tool at (https://ffr-research-visualization.streamlit.app), which will display Columbia's data. Currently it allows you to filter by
+You can access this tool at https://ffr-research-visualization.streamlit.app, which will display Columbia's data. Currently it allows you to filter by
 years, funders, and recipients, and will display the following graphs:
 - Funding by Selected Funders for Selected Recipients Over Time
 - Total Funding Over Time
